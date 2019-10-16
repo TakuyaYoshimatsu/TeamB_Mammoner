@@ -24,7 +24,7 @@ public class HeroDirectionalAnimation : MonoBehaviour
         Vector2 inputAxis = new Vector2((int)Input.GetAxis("Horizontal"), (int)Input.GetAxis("Vertical"));
         if (inputAxis != Vector2.zero) Direction = inputAxis;
 
-        //add start yoshimatsu a
+        //add start yoshimatsu
         var Horizontal = transform.position.x - prev_h.x;
         var Vertical   = transform.position.y - prev_v.y;
         //add end yoshimatsu
@@ -33,6 +33,7 @@ public class HeroDirectionalAnimation : MonoBehaviour
         if (Horizontal < 0) Direction = Vector2.left;
         if (Vertical   < 0) Direction = Vector2.down;
         if (Horizontal > 0) Direction = Vector2.right;
+
 
         if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) ||
             Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D)) Direction = GetButtonDirection();
@@ -47,6 +48,7 @@ public class HeroDirectionalAnimation : MonoBehaviour
         {
             Anim.speed = 0.0f;
         }
+        
 
         //add start yoshimatsu
         prev_h.x = transform.position.x;

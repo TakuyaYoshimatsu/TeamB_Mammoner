@@ -50,7 +50,7 @@ public class MoveHero : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         velocity = Vector2.zero;
         arrived = false;
-        elapsedTime = 0f;
+        elapsedTime = 10f;
         SetState(HeroState.Walk);
     }
 
@@ -68,13 +68,22 @@ public class MoveHero : MonoBehaviour
                 //setPosition.SetDestination(MamonoTransform.position);
                 //プレイヤーの方向に向かって移動していく
                 Vector2 diff = (MamonoTransform.position - transform.position); //プレイヤーと対照との差分を取得
-                v = new Vector2((diff.x+3) * speed, diff.y * speed);//取得した座標に対して変数をかけてやると進む
+                v = new Vector2((diff.x + 1) * speed, (diff.y - 2) * speed);//取得した座標に対して変数をかけてやると進む
                 transform.Translate(v);
+               
+                if (diff.x < 5 && diff.y <5)
+                {
+                    Debug.Log("diff" + diff);
+                    SetState(HeroState.Wait);
+                }
             }
+
         }
         else if (state == HeroState.Wait)
         {
             elapsedTime += Time.deltaTime;
+
+
 
             //　待ち時間を越えたら次の目的地を設定
             if (elapsedTime > waitTime)
@@ -104,7 +113,8 @@ public class MoveHero : MonoBehaviour
             elapsedTime = 0f;
             state = tempState;
             arrived = true;
-            //velocity = Vector2.zero;
+            velocity = Vector2.zero;
+            Debug.Log("diff");
         }
     }
     //　敵キャラクターの状態取得メソッド
