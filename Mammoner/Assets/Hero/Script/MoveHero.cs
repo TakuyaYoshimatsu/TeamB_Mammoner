@@ -23,14 +23,14 @@ public class MoveHero : MonoBehaviour
     //　目的地
     private Vector3 destination;
     //　歩くスピード
-    [SerializeField]
-    private float walkSpeed = 1.0f;
+    //[SerializeField]
+    //private float walkSpeed = 1.0f;
     //　速度
     private Vector3 velocity;
     //　移動方向
     private Vector3 direction;
     //　到着フラグ
-    private bool arrived;
+    //private bool arrived;
     //　SetPositionスクリプト
     //private SetPosition setPosition;
     //　待ち時間
@@ -38,7 +38,7 @@ public class MoveHero : MonoBehaviour
     private float waitTime = 5f;
     //　経過時間
     private float elapsedTime;
-    // 敵の状態
+    // 勇者の状態
     private HeroState state;
     //　プレイヤーTransform
     private Transform MamonoTransform;
@@ -49,7 +49,7 @@ public class MoveHero : MonoBehaviour
         heroController = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody2D>();
         velocity = Vector2.zero;
-        arrived = false;
+        //arrived = false;
         elapsedTime = 10f;
         SetState(HeroState.Walk);
     }
@@ -73,7 +73,6 @@ public class MoveHero : MonoBehaviour
                
                 if (diff.x < 5 && diff.y <5)
                 {
-                    Debug.Log("diff" + diff);
                     SetState(HeroState.Wait);
                 }
             }
@@ -96,7 +95,7 @@ public class MoveHero : MonoBehaviour
     public void SetState(HeroState tempState, Transform targetObj = null) {
         if (tempState == HeroState.Walk)
         {
-            arrived = false;
+            //arrived = false;
             elapsedTime = 0f;
             state = tempState;
         }
@@ -104,7 +103,7 @@ public class MoveHero : MonoBehaviour
         {
             state = tempState;
             //　待機状態から追いかける場合もあるのでOff
-            arrived = false;
+            //arrived = false;
             //　追いかける対象をセット
             MamonoTransform = targetObj;
         }
@@ -112,9 +111,8 @@ public class MoveHero : MonoBehaviour
         {
             elapsedTime = 0f;
             state = tempState;
-            arrived = true;
+            //arrived = true;
             velocity = Vector2.zero;
-            Debug.Log("diff");
         }
     }
     //　敵キャラクターの状態取得メソッド

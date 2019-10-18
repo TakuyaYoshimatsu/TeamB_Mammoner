@@ -5,22 +5,44 @@ using UnityEngine;
 public class HeroDirectionalAnimation : MonoBehaviour
 {
     private Animator _anim;
+    private Animation anim;
     public Animator Anim { get { return this._anim ? this._anim : this._anim = GetComponent<Animator>(); } }
     public Vector2 Direction { get; private set; }
 
     //add start
     private Vector3 prev_h;
     private Vector3 prev_v;
+    [SerializeField]
+    private int minute;
+    [SerializeField]
+    private float seconds;
+    //　前のUpdateの時の秒数
+    private float oldSeconds;
+    //攻撃方向フラグ
+    int flag = 0;
     //add end
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = this.gameObject.GetComponent<Animation>();
+        minute = 0;
+        seconds = 0f;
+        oldSeconds = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        seconds += Time.deltaTime;
+        if (seconds >= 60f)
+        {
+            minute++;
+            seconds = seconds - 60;
+        }
+
+        //Debug.Log(seconds+"秒");
+
         Vector2 inputAxis = new Vector2((int)Input.GetAxis("Horizontal"), (int)Input.GetAxis("Vertical"));
         if (inputAxis != Vector2.zero) Direction = inputAxis;
 
@@ -29,20 +51,51 @@ public class HeroDirectionalAnimation : MonoBehaviour
         var Vertical   = transform.position.y - prev_v.y;
         //add end yoshimatsu
 
-        if (Vertical   > 0) Direction = Vector2.up;
-        if (Horizontal < 0) Direction = Vector2.left;
-        if (Vertical   < 0) Direction = Vector2.down;
-        if (Horizontal > 0) Direction = Vector2.right;
+        
 
+        if (Vertical > 0)
+        {
+            Direction = Vector2.up;
+            flag      = 2;
+        }
+        if (Horizontal < 0)
+        {
+            Direction = Vector2.left;
+            flag      = 3;
+        }
+        if (Vertical < 0)
+        {
+            Direction = Vector2.down;
+            flag      = 1;
+        }
+        if (Horizontal > 0)
+        {
+            Direction = Vector2.right;
+            flag      = 4;
+        }
 
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) ||
-            Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D)) Direction = GetButtonDirection();
-
+        Debug.Log("Horizontal" + Horizontal + "Vertical" + Vertical);
         if (Direction != Vector2.zero)
         {
-            Anim.speed = 1.0f;
-            Anim.SetFloat("x", Direction.x);
-            Anim.SetFloat("y", Direction.y);
+            if (Horizontal != 0 && Vertical != 0 || seconds <= 1)
+            {
+                Anim.speed = 1.0f;
+                Anim.SetFloat("x", Direction.x);
+                Anim.SetFloat("y", Direction.y);
+            }
+            else if (Horizontal == 0 && Vertical == 0)
+            {
+                //anim.Play (flag);
+                Debug.Log("★★" + flag);
+                Anim.SetInteger("AnimIdx", flag);
+
+            }
+            else
+            {
+                Anim.speed = 1.0f;
+                Anim.SetFloat("x", Direction.x);
+                Anim.SetFloat("y", Direction.y);
+            }
         }
         else
         {
@@ -54,6 +107,7 @@ public class HeroDirectionalAnimation : MonoBehaviour
         prev_h.x = transform.position.x;
         prev_v.y = transform.position.y;
         //add end yoshimatsu
+        oldSeconds = seconds;
 
     }
 

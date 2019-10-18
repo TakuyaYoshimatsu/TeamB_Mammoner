@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1107 &-8946133351144167984
+--- !u!1107 &-3767046472501177081
 AnimatorStateMachine:
   serializedVersion: 5
   m_ObjectHideFlags: 1
@@ -10,7 +10,7 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: 1598691890803754107}
+    m_State: {fileID: 8701107625497757409}
     m_Position: {x: 200, y: 0, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
@@ -21,7 +21,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 1598691890803754107}
+  m_DefaultState: {fileID: 8701107625497757409}
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -34,7 +34,7 @@ AnimatorController:
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
-    m_StateMachine: {fileID: -8946133351144167984}
+    m_StateMachine: {fileID: -3767046472501177081}
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
@@ -44,14 +44,14 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &1598691890803754107
+--- !u!1102 &8701107625497757409
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hero_attack_up
+  m_Name: Hero_Attack_Up
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -64,7 +64,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7adf45fdfac99b14f9422f48f84ddcf9, type: 2}
+  m_Motion: {fileID: 7400000, guid: ec5d8a11117424f42b97df6e64e9830c, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
