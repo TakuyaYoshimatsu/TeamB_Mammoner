@@ -60,15 +60,17 @@ public class MoveHero : MonoBehaviour
         
         if (state == HeroState.Walk || state == HeroState.Chase)
         {
-            var v = new Vector2(-speed, rb.velocity.y);
+            var v = new Vector2(speed, rb.velocity.y);
             transform.Translate(v);
             //　キャラクターを追いかける状態であればキャラクターの目的地を再設定
             if (state == HeroState.Chase)
             {
                 //setPosition.SetDestination(MamonoTransform.position);
+               
+                
                 //プレイヤーの方向に向かって移動していく
                 Vector2 diff = (MamonoTransform.position - transform.position); //プレイヤーと対照との差分を取得
-                v = new Vector2((diff.x + 1) * speed, (diff.y - 2) * speed);//取得した座標に対して変数をかけてやると進む
+                v = new Vector2((diff.x - 1) * speed, (diff.y - 2) * speed);//取得した座標に対して変数をかけてやると進む
                 transform.Translate(v);
                
                 if (diff.x < 5 && diff.y <5)
@@ -76,8 +78,8 @@ public class MoveHero : MonoBehaviour
                     SetState(HeroState.Wait);
                 }
             }
-
         }
+
         else if (state == HeroState.Wait)
         {
             elapsedTime += Time.deltaTime;
@@ -85,10 +87,10 @@ public class MoveHero : MonoBehaviour
 
 
             //　待ち時間を越えたら次の目的地を設定
-            if (elapsedTime > waitTime)
-            {
+            //if (elapsedTime > waitTime)
+            //{
                 SetState(HeroState.Walk);
-            }
+           // }
         }
     }
     //　敵キャラクターの状態変更メソッド

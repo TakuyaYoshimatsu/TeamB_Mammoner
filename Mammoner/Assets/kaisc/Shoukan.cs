@@ -13,7 +13,7 @@ public class Shoukan : MonoBehaviour
 	int arrayNumber = 3;
 
     //召還者（マモナー）のMP
-    private int mamonerMp = 100;
+    private int mamonerMp = 150;
 
     //MP消費量
     int cost;
@@ -21,8 +21,7 @@ public class Shoukan : MonoBehaviour
     //召還者（マモナー）のMPをテキスト表示
     private Text mamonerMpText;
 
-    //勝利テキスト
-    private Text syouriText;
+   
 
 
     //スライムを選択
@@ -81,13 +80,7 @@ public class Shoukan : MonoBehaviour
 	private void Update()
 	{
 
-        if (mamonerMp <= 0)
-        {
-            //Textオブジェクトをキャッシュ
-            syouriText = GameObject.Find("SYOURIText").GetComponent<Text>();
-            //現在HPを画面に表示
-            syouriText.text = "勝利";
-        }
+   
 
         //PointerEventData pointer = new PointerEventData(EventSystem.current);
         //変更する
@@ -120,7 +113,7 @@ public class Shoukan : MonoBehaviour
 
 			//召還コスト分MPを差し引く
 			mamonerMp -= cost;
-
+            
             //Textオブジェクトをキャッシュ
             mamonerMpText = GameObject.Find("Health Text").GetComponent<Text>();
             //現在HPを画面に表示

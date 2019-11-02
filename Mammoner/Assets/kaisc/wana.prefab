@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 9205552564549494997}
   - component: {fileID: 9205552564549495002}
   - component: {fileID: 9205552564549495003}
+  - component: {fileID: -4221226575249930408}
   m_Layer: 0
-  m_Name: mamono (1)
-  m_TagString: Monster
+  m_Name: wana
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 9205552564549495000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.515, y: -2.158, z: 0}
-  m_LocalScale: {x: 3.048, y: 3.086, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -97,3 +98,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-4221226575249930408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9205552564549495000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ba33f8d14df4042b5c26ff98aa82e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapSound: {fileID: 0}
+  effectPrefab: {fileID: 0}
